@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Bloghi304DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Etiketler">
+          <Key>
+            <PropertyRef Name="EtiketlerID" />
+          </Key>
+          <Property Name="EtiketlerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EtiketAdi" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Kategoriler">
+          <Key>
+            <PropertyRef Name="KategorilerID" />
+          </Key>
+          <Property Name="KategorilerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KategoriAdi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Aciklama" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="MakaleEtiketleri">
+          <Key>
+            <PropertyRef Name="MakaleID" />
+            <PropertyRef Name="EtiketID" />
+          </Key>
+          <Property Name="MakaleID" Type="int" Nullable="false" />
+          <Property Name="EtiketID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Makaleler">
+          <Key>
+            <PropertyRef Name="MakalelerID" />
+          </Key>
+          <Property Name="MakalelerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Baslik" Type="nvarchar" MaxLength="50" />
+          <Property Name="icerik" Type="nvarchar(max)" />
+          <Property Name="EklenmeTarihi" Type="date" />
+          <Property Name="GoruntulenmeSayisi" Type="int" />
+          <Property Name="GuncellenmeTarihi" Type="date" />
+          <Property Name="BegenmeSayisi" Type="int" />
+          <Property Name="YazarID" Type="int" />
+          <Property Name="KategoriID" Type="int" />
+          <Property Name="Aktifmi" Type="bit" />
+        </EntityType>
+        <EntityType Name="Resimler">
+          <Key>
+            <PropertyRef Name="ResimlerID" />
+          </Key>
+          <Property Name="ResimlerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KucukBoyut" Type="nvarchar(max)" />
+          <Property Name="OrtaBoyut" Type="nvarchar(max)" />
+          <Property Name="BuyukBoyut" Type="nvarchar(max)" />
+          <Property Name="Video" Type="nvarchar(max)" />
+          <Property Name="MakaleID" Type="int" />
+        </EntityType>
+        <EntityType Name="Uyeler">
+          <Key>
+            <PropertyRef Name="UyelerID" />
+          </Key>
+          <Property Name="UyelerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Adi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Soyadi" Type="nvarchar" MaxLength="50" />
+          <Property Name="KullaniciAdi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Kullanicisifresi" Type="nvarchar" MaxLength="50" />
+          <Property Name="MailAdres" Type="nvarchar" MaxLength="50" />
+          <Property Name="DogumTarihi" Type="date" />
+          <Property Name="KayitTarihi" Type="date" />
+          <Property Name="Yazarmi" Type="bit" />
+          <Property Name="YetkiID" Type="int" />
+        </EntityType>
+        <EntityType Name="Yetkiler">
+          <Key>
+            <PropertyRef Name="YetkilerID" />
+          </Key>
+          <Property Name="YetkilerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="YetkiAdi" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Yorumlar">
+          <Key>
+            <PropertyRef Name="YorumlarID" />
+          </Key>
+          <Property Name="YorumlarID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="YorumBaslik" Type="nvarchar" MaxLength="50" />
+          <Property Name="Yorumicerik" Type="nvarchar(max)" />
+          <Property Name="YorumTarihi" Type="date" />
+          <Property Name="UyeID" Type="int" />
+          <Property Name="BegenmeSayisi" Type="int" />
+          <Property Name="MakaleID" Type="int" />
+          <Property Name="Aktifmi" Type="bit" />
+          <Property Name="GuncellemeTarihi" Type="date" />
+        </EntityType>
+        <EntityContainer Name="Bloghi304DBModelStoreContainer">
+          <EntitySet Name="Etiketler" EntityType="Self.Etiketler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kategoriler" EntityType="Self.Kategoriler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MakaleEtiketleri" EntityType="Self.MakaleEtiketleri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Makaleler" EntityType="Self.Makaleler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Resimler" EntityType="Self.Resimler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Uyeler" EntityType="Self.Uyeler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Yetkiler" EntityType="Self.Yetkiler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Yorumlar" EntityType="Self.Yorumlar" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Bloghi304DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Etiketler">
+          <Key>
+            <PropertyRef Name="EtiketlerID" />
+          </Key>
+          <Property Name="EtiketlerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EtiketAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Kategoriler">
+          <Key>
+            <PropertyRef Name="KategorilerID" />
+          </Key>
+          <Property Name="KategorilerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KategoriAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MakaleEtiketleri">
+          <Key>
+            <PropertyRef Name="MakaleID" />
+            <PropertyRef Name="EtiketID" />
+          </Key>
+          <Property Name="MakaleID" Type="Int32" Nullable="false" />
+          <Property Name="EtiketID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Makaleler">
+          <Key>
+            <PropertyRef Name="MakalelerID" />
+          </Key>
+          <Property Name="MakalelerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Baslik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="icerik" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EklenmeTarihi" Type="DateTime" Precision="0" />
+          <Property Name="GoruntulenmeSayisi" Type="Int32" />
+          <Property Name="GuncellenmeTarihi" Type="DateTime" Precision="0" />
+          <Property Name="BegenmeSayisi" Type="Int32" />
+          <Property Name="YazarID" Type="Int32" />
+          <Property Name="KategoriID" Type="Int32" />
+          <Property Name="Aktifmi" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Resimler">
+          <Key>
+            <PropertyRef Name="ResimlerID" />
+          </Key>
+          <Property Name="ResimlerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KucukBoyut" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OrtaBoyut" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BuyukBoyut" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Video" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MakaleID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Uyeler">
+          <Key>
+            <PropertyRef Name="UyelerID" />
+          </Key>
+          <Property Name="UyelerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Soyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KullaniciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Kullanicisifresi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MailAdres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DogumTarihi" Type="DateTime" Precision="0" />
+          <Property Name="KayitTarihi" Type="DateTime" Precision="0" />
+          <Property Name="Yazarmi" Type="Boolean" />
+          <Property Name="YetkiID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Yetkiler">
+          <Key>
+            <PropertyRef Name="YetkilerID" />
+          </Key>
+          <Property Name="YetkilerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YetkiAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Yorumlar">
+          <Key>
+            <PropertyRef Name="YorumlarID" />
+          </Key>
+          <Property Name="YorumlarID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YorumBaslik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Yorumicerik" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="YorumTarihi" Type="DateTime" Precision="0" />
+          <Property Name="UyeID" Type="Int32" />
+          <Property Name="BegenmeSayisi" Type="Int32" />
+          <Property Name="MakaleID" Type="Int32" />
+          <Property Name="Aktifmi" Type="Boolean" />
+          <Property Name="GuncellemeTarihi" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityContainer Name="Bloghi304DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Etiketler" EntityType="Self.Etiketler" />
+          <EntitySet Name="Kategoriler" EntityType="Self.Kategoriler" />
+          <EntitySet Name="MakaleEtiketleri" EntityType="Self.MakaleEtiketleri" />
+          <EntitySet Name="Makaleler" EntityType="Self.Makaleler" />
+          <EntitySet Name="Resimler" EntityType="Self.Resimler" />
+          <EntitySet Name="Uyeler" EntityType="Self.Uyeler" />
+          <EntitySet Name="Yetkiler" EntityType="Self.Yetkiler" />
+          <EntitySet Name="Yorumlar" EntityType="Self.Yorumlar" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Bloghi304DBModelStoreContainer" CdmEntityContainer="Bloghi304DBEntities">
+          <EntitySetMapping Name="Etiketler">
+            <EntityTypeMapping TypeName="Bloghi304DBModel.Etiketler">
+              <MappingFragment StoreEntitySet="Etiketler">
+                <ScalarProperty Name="EtiketlerID" ColumnName="EtiketlerID" />
+                <ScalarProperty Name="EtiketAdi" ColumnName="EtiketAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kategoriler">
+            <EntityTypeMapping TypeName="Bloghi304DBModel.Kategoriler">
+              <MappingFragment StoreEntitySet="Kategoriler">
+                <ScalarProperty Name="KategorilerID" ColumnName="KategorilerID" />
+                <ScalarProperty Name="KategoriAdi" ColumnName="KategoriAdi" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MakaleEtiketleri">
+            <EntityTypeMapping TypeName="Bloghi304DBModel.MakaleEtiketleri">
+              <MappingFragment StoreEntitySet="MakaleEtiketleri">
+                <ScalarProperty Name="MakaleID" ColumnName="MakaleID" />
+                <ScalarProperty Name="EtiketID" ColumnName="EtiketID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Makaleler">
+            <EntityTypeMapping TypeName="Bloghi304DBModel.Makaleler">
+              <MappingFragment StoreEntitySet="Makaleler">
+                <ScalarProperty Name="MakalelerID" ColumnName="MakalelerID" />
+                <ScalarProperty Name="Baslik" ColumnName="Baslik" />
+                <ScalarProperty Name="icerik" ColumnName="icerik" />
+                <ScalarProperty Name="EklenmeTarihi" ColumnName="EklenmeTarihi" />
+                <ScalarProperty Name="GoruntulenmeSayisi" ColumnName="GoruntulenmeSayisi" />
+                <ScalarProperty Name="GuncellenmeTarihi" ColumnName="GuncellenmeTarihi" />
+                <ScalarProperty Name="BegenmeSayisi" ColumnName="BegenmeSayisi" />
+                <ScalarProperty Name="YazarID" ColumnName="YazarID" />
+                <ScalarProperty Name="KategoriID" ColumnName="KategoriID" />
+                <ScalarProperty Name="Aktifmi" ColumnName="Aktifmi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Resimler">
+            <EntityTypeMapping TypeName="Bloghi304DBModel.Resimler">
+              <MappingFragment StoreEntitySet="Resimler">
+                <ScalarProperty Name="ResimlerID" ColumnName="ResimlerID" />
+                <ScalarProperty Name="KucukBoyut" ColumnName="KucukBoyut" />
+                <ScalarProperty Name="OrtaBoyut" ColumnName="OrtaBoyut" />
+                <ScalarProperty Name="BuyukBoyut" ColumnName="BuyukBoyut" />
+                <ScalarProperty Name="Video" ColumnName="Video" />
+                <ScalarProperty Name="MakaleID" ColumnName="MakaleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uyeler">
+            <EntityTypeMapping TypeName="Bloghi304DBModel.Uyeler">
+              <MappingFragment StoreEntitySet="Uyeler">
+                <ScalarProperty Name="UyelerID" ColumnName="UyelerID" />
+                <ScalarProperty Name="Adi" ColumnName="Adi" />
+                <ScalarProperty Name="Soyadi" ColumnName="Soyadi" />
+                <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
+                <ScalarProperty Name="Kullanicisifresi" ColumnName="Kullanicisifresi" />
+                <ScalarProperty Name="MailAdres" ColumnName="MailAdres" />
+                <ScalarProperty Name="DogumTarihi" ColumnName="DogumTarihi" />
+                <ScalarProperty Name="KayitTarihi" ColumnName="KayitTarihi" />
+                <ScalarProperty Name="Yazarmi" ColumnName="Yazarmi" />
+                <ScalarProperty Name="YetkiID" ColumnName="YetkiID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Yetkiler">
+            <EntityTypeMapping TypeName="Bloghi304DBModel.Yetkiler">
+              <MappingFragment StoreEntitySet="Yetkiler">
+                <ScalarProperty Name="YetkilerID" ColumnName="YetkilerID" />
+                <ScalarProperty Name="YetkiAdi" ColumnName="YetkiAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Yorumlar">
+            <EntityTypeMapping TypeName="Bloghi304DBModel.Yorumlar">
+              <MappingFragment StoreEntitySet="Yorumlar">
+                <ScalarProperty Name="YorumlarID" ColumnName="YorumlarID" />
+                <ScalarProperty Name="YorumBaslik" ColumnName="YorumBaslik" />
+                <ScalarProperty Name="Yorumicerik" ColumnName="Yorumicerik" />
+                <ScalarProperty Name="YorumTarihi" ColumnName="YorumTarihi" />
+                <ScalarProperty Name="UyeID" ColumnName="UyeID" />
+                <ScalarProperty Name="BegenmeSayisi" ColumnName="BegenmeSayisi" />
+                <ScalarProperty Name="MakaleID" ColumnName="MakaleID" />
+                <ScalarProperty Name="Aktifmi" ColumnName="Aktifmi" />
+                <ScalarProperty Name="GuncellemeTarihi" ColumnName="GuncellemeTarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

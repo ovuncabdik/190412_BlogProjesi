@@ -1,0 +1,46 @@
+﻿@model IEnumerable<BlogSitesi.Kategoriler>
+
+@{
+    ViewBag.Title = "KategoriListesiIndex";
+    Layout = "~/Areas/AdminPaneli/Views/Shared/AdminLayoutPage.cshtml";
+}
+
+
+
+<div class="content-wrapper">
+    <div class="col-md-12 col-lg-8 offset-lg-2">
+        <p>
+            @Html.ActionLink("KATEGORİ EKLE", "Create" ,null, new { @class = "btn btn-info" })
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.KategoriAdi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Aciklama)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.KategoriAdi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Aciklama)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.KategorilerID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.KategorilerID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.KategorilerID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+</div>

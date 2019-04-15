@@ -1,0 +1,44 @@
+﻿@model IEnumerable<BlogSitesi.Etiketler>
+
+@{
+    ViewBag.Title = "EtiketListesiIndex";
+    Layout = "~/Areas/AdminPaneli/Views/Shared/AdminLayoutPage.cshtml";
+}
+
+<h2>EtiketListesiIndex</h2>
+<div class="content-wrapper">
+    <div class="col-md-12 col-md-8 offset-lg-2">
+        <p>
+            @Html.ActionLink("ETİKET EKLE", "Create" ,null, new { @class = "btn btn-info" })
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.EtiketAdi)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EtiketAdi)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.EtiketlerID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.EtiketlerID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.EtiketlerID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+
+</div>
+
+
+
+

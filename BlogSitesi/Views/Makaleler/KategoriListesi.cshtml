@@ -1,0 +1,24 @@
+﻿
+@using BlogSitesi.Models
+@model List<Kategoriler>
+
+@*@{
+//Bloghi304DBEntities db = new Bloghi304DBEntities();
+}*@
+
+
+        <div class="categories">
+            <h4>Kategoriler</h4>
+
+            @foreach (var item in Model)
+            {
+                <h6><a href="#">@item.KategoriAdi</a></h6>
+
+            }
+
+        </div>
+<div class="col-12">
+    @Html.Partial("YorumEklePartialIndex")
+    @*@Html.ActionLink()*@
+</div>
+
